@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    >
+
+    <LinearLayout
+        android:id="@+id/bg_holder"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12.0dip"
+        android:layout_marginRight="12.0dip"
+        android:gravity="right"
+        android:orientation="vertical" 
+        android:background="@drawable/history_item_bg_single">
+
+        <TextView
+            android:id="@+id/historyExpr"
+            android:layout_width="fill_parent"
+            android:layout_height="26.0dip"
+            android:layout_marginRight="8.0dip"
+            android:layout_marginTop="10.0dip"
+            android:fontFamily="sans-serif"
+            android:gravity="top|right|center"
+            android:singleLine="true"
+            android:textSize="18.0sp" 
+            android:textColor="#fff"/>
+
+        <TextView
+            android:id="@+id/historyResult"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:lines="1"
+            android:gravity="right|center"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:singleLine="true"
+            android:textSize="46.0sp"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+/*
+ * Copyright (C) 2008, The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        sothree:collapsedHeight="168dp"
+        sothree:dragView="@+id/displayview"
+        sothree:shadowHeight="4dp" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/history_action_bar" >
+
+           <RelativeLayout
+                android:id="@+id/history_action_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp"
+                 >
+
+                <ImageButton
+                    android:id="@+id/clear_all_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/btn_clear_all" />
+
+                <ImageButton
+                    android:id="@+id/add_all_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/btn_add_all"  />
+            </RelativeLayout>
+            <de.timroes.android.listview.EnhancedListView
+                android:id="@+id/historyList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_calculator" 
+                android:layout_above="@id/history_action_bar"/>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/displayview"
+                android:layout_width="match_parent"
+                android:layout_height="168dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/display"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <com.kevinsoft.calculator.CalculatorDisplay
+                    android:id="@+id/display"
+                    android:layout_width="0dip"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    maxDigits="@integer/max_digits" >
+
+                    <com.kevinsoft.calculator.CalculatorEditText style="@style/display_style" 
+                        />
+
+                    <com.kevinsoft.calculator.CalculatorEditText style="@style/display_style" 
+                        />
+                </com.kevinsoft.calculator.CalculatorDisplay>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_calculator"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5" >
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:background="@android:color/transparent" />
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" >
+
+                        <!-- marginRight has to be 0 to catch border-touch -->
+
+                        <com.kevinsoft.calculator.ColorButton
+                            android:id="@+id/clear"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:text="@string/clear"
+                            android:textSize="15sp" />
+                        <!-- marginRight has to be 0 to catch border-touch -->
+
+                        <com.kevinsoft.calculator.ColorButton
+                            android:id="@+id/del"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="0dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/delDesc"
+                            android:ellipsize="end"
+                            android:text="@string/del"
+                            android:textSize="15sp" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <com.kevinsoft.calculator.CalculatorViewPager
+                    android:id="@+id/panelswitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="10" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+</LinearLayout>
