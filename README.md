@@ -2,13 +2,15 @@
 ======
 # KevinCalculator
 
+
 	This is a calculator with Chinese voice enabled which I implemented 1 year ago .
 It also has a beautiful UI.And better history list with swap to dismiss function. 
 Also ,with functions to add all the results user calculated. 
 Please feel free to give some advice. **This project is not well tested **.
 
-##
-	The screen shot
+##screen shot
+
+
 	![KevinCalculator](pic1.png)
 	![KevinCalculator](pic2.png)
 
