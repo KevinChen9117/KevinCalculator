@@ -8,11 +8,9 @@ It also has a beautiful UI.And better history list with swap to dismiss function
 Also ,with functions to add all the results user calculated. 
 Please feel free to give some advice. **This project is not well tested **.
 
-##screen shot
-
-
-	![KevinCalculator](pic1.png)
-	![KevinCalculator](pic2.png)
+## Screen shot
+![](pic1.png)
+![](pic2.png)
 
 ## License
 
