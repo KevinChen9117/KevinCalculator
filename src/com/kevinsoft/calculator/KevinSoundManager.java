@@ -10,7 +10,16 @@ import android.media.SoundPool;
 import android.os.Handler;
 import android.util.Log;
 
+/**
+ * This class manages sound resources and plays the sound.
+ * 
+ * @author Kevin CHEN
+ *
+ */
 public class KevinSoundManager {
+	//Tag of this class for logging purpose
+	private static String TAG = KevinSoundManager.class.getSimpleName();
+	//Singleton instance
 	private static KevinSoundManager sMe;
 	private int mCurrentStreamId;
 	private AudioManager mAudioManager;
@@ -37,7 +46,8 @@ public class KevinSoundManager {
 
 	private KevinSoundManager(){}
 	
-	public static KevinSoundManager getInstance() {
+	//Singleton 
+	public static synchronized KevinSoundManager getInstance() {
 		if (sMe == null){
 			sMe = new KevinSoundManager();
 		}
@@ -65,6 +75,9 @@ public class KevinSoundManager {
 		this.mSoundPoolMap.put(text, localSound);
 	}
 
+	/**
+	 * Clean up method
+	 */
 	public void cleanup() {
 		unloadAll();
 		this.mSoundPool.release();
@@ -72,6 +85,7 @@ public class KevinSoundManager {
 		sMe = null;
 	}
 
+	
 	public void initSounds(Context context) {
 		this.mContext = context;
 		this.mSoundPool = new SoundPool(KEY.length, 3, 0);
@@ -80,24 +94,24 @@ public class KevinSoundManager {
 				.getSystemService("audio"));
 		this.mPlaying = false;
 		
-		addSound("1", R.raw.one, 320);
-        addSound("2", R.raw.two, 274);
-        addSound("3", R.raw.three, 304);
-        addSound("4", R.raw.four, 215);
-        addSound("5", R.raw.five, 388);
-        addSound("6", R.raw.six, 277);
-        addSound("7", R.raw.seven, 447);
-        addSound("8", R.raw.eight, 274);
-        addSound("9", R.raw.nine, 451);
-        addSound("0", R.raw.zero, 404);
-        addSound("CLR", R.raw.ac, 696);
-        addSound("DELETE", R.raw.del, 442);
-        addSound("+", R.raw.plus, 399);
-        addSound("\u00d7", R.raw.mul, 399);
-        addSound("\u2212", R.raw.minus, 399);
-        addSound("\u00f7", R.raw.div, 399);
-        addSound("=", R.raw.equal, 480);
-        addSound(".", R.raw.dot, 454);
+		addSound(mContext.getString(R.string.digit1), R.raw.one, 320);
+        addSound(mContext.getString(R.string.digit2), R.raw.two, 274);
+        addSound(mContext.getString(R.string.digit3), R.raw.three, 304);
+        addSound(mContext.getString(R.string.digit4), R.raw.four, 215);
+        addSound(mContext.getString(R.string.digit5), R.raw.five, 388);
+        addSound(mContext.getString(R.string.digit6), R.raw.six, 277);
+        addSound(mContext.getString(R.string.digit7), R.raw.seven, 447);
+        addSound(mContext.getString(R.string.digit8), R.raw.eight, 274);
+        addSound(mContext.getString(R.string.digit9), R.raw.nine, 451);
+        addSound(mContext.getString(R.string.digit0), R.raw.zero, 404);
+        addSound(mContext.getString(R.string.clear), R.raw.ac, 696);
+        addSound(mContext.getString(R.string.del), R.raw.del, 442);
+        addSound(mContext.getString(R.string.plus), R.raw.plus, 399);
+        addSound(mContext.getString(R.string.mul), R.raw.mul, 399);
+        addSound(mContext.getString(R.string.minus), R.raw.minus, 399);
+        addSound(mContext.getString(R.string.div), R.raw.div, 399);
+        addSound(mContext.getString(R.string.equal), R.raw.equal, 480);
+        addSound(mContext.getString(R.string.dot), R.raw.dot, 454);
 		
 	}
 
@@ -110,7 +124,7 @@ public class KevinSoundManager {
 //		if (!this.mPlaying){
 //			playNextSound();
 //		}
-		Log.d("TCL", "soundsToPlay :" + soundsToPlay.toString());
+		Log.d(TAG, "soundsToPlay :" + soundsToPlay.toString());
 		for (int j = 0;; j++) {
 			if (j >= length) {
 				if (!this.mPlaying)
@@ -122,12 +136,19 @@ public class KevinSoundManager {
 		}
 	}
 
+	/**
+	 * Play the sound 
+	 * @param text text for the sound
+	 */
 	public void playSound(String text) {
 		stopSound();
 		this.mSoundQueue.add(text);
 		playNextSound();
 	}
 
+	/**
+	 * Stop playing the sound .
+	 */
 	public void stopSound() {
 		this.mHandler.removeCallbacks(this.mPlayNext);
 		this.mSoundQueue.clear();
@@ -135,10 +156,13 @@ public class KevinSoundManager {
 		this.mPlaying = false;
 	}
 
+	/**
+	 * Remove all the sound 
+	 */
 	public void unloadAll() {
 		stopSound();
 		if (this.mSoundPoolMap.size() > 0) {
-			Iterator localIterator = this.mSoundPoolMap.keySet().iterator();
+			Iterator<String> localIterator = this.mSoundPoolMap.keySet().iterator();
 			while (true) {
 				if (!localIterator.hasNext()) {
 					this.mSoundPoolMap.clear();

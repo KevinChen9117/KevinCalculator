@@ -255,7 +255,10 @@ public class Calculator extends Activity implements PanelSwitcher.Listener, Logi
         return true;
     }
 
-
+    /**
+     * This is a tricky method to show overflow menu icon
+     * on the action bar.
+     */
     private void createFakeMenu() {
         mOverflowMenuButton = findViewById(R.id.overflow_menu);
         if (mOverflowMenuButton != null) {
