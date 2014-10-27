@@ -1,16 +1,17 @@
 
 ======
 # KevinCalculator
-
-
 	This is a calculator with Chinese voice enabled which I implemented 1 year ago .
 It also has a beautiful UI.And better history list with swap to dismiss function. 
 Also ,with functions to add all the results user calculated. 
 Please feel free to give some advice. **This project is not well tested **.
+I hope someone submit bugs , then I can fix it. 
 
 ## Screen shot
 ![](pic1.png)
 ![](pic2.png)
+
+
 
 ## License
 
